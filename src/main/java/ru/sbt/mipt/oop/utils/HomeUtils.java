@@ -1,9 +1,9 @@
 package ru.sbt.mipt.oop.utils;
 
-import ru.sbt.mipt.oop.Door;
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.home_components.Door;
+import ru.sbt.mipt.oop.home_components.Light;
+import ru.sbt.mipt.oop.home_components.Room;
+import ru.sbt.mipt.oop.home_components.SmartHome;
 
 public class HomeUtils {
   public static Light findLight(SmartHome smartHome, String lightId) {
