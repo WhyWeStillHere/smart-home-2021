@@ -14,14 +14,15 @@ public class HallDoorEventHandler implements EventHandler {
   }
 
   @Override
-  public void handleEvent(SmartHome smartHome, SensorEvent event) {
+  public void handleEvent(SmartHome smartHome, Event event) {
     if (!isCorrectEvent(event)) return;
 
+    SensorEvent sensorEvent = (SensorEvent) event;
     smartHome.execute((HomeComponent homeComponent) -> {
       if (!(homeComponent instanceof Room)) return;
       Room room = (Room) homeComponent;
 
-      if (room.getName().equals("hall") && room.hasDoor(event.getObjectId())) {
+      if (room.getName().equals("hall") && room.hasDoor(sensorEvent.getObjectId())) {
         smartHome.execute((HomeComponent otherHomeComponent) -> {
           if (!(otherHomeComponent instanceof Light)) return;
           Light light = (Light) otherHomeComponent;
@@ -34,7 +35,11 @@ public class HallDoorEventHandler implements EventHandler {
     });
   }
 
-  private boolean isCorrectEvent(SensorEvent event) {
-    return event.getType() == DOOR_CLOSED;
+  private boolean isCorrectEvent(Event event) {
+    if (!(event instanceof SensorEvent)) {
+      return false;
+    }
+    SensorEvent sensorEvent = (SensorEvent) event;
+    return sensorEvent.getType() == DOOR_CLOSED;
   }
 }

@@ -1,15 +1,18 @@
 package ru.sbt.mipt.oop.homecomponents;
 
 import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.signaling.Signaling;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class SmartHome implements HomeComponent {
-  Collection<Room> rooms;
+  private final Collection<Room> rooms;
+  private Signaling signaling;
 
   public SmartHome() {
     rooms = new ArrayList<>();
+    signaling = new Signaling();
   }
 
   public SmartHome(Collection<Room> rooms) {
@@ -18,6 +21,10 @@ public class SmartHome implements HomeComponent {
 
   public void addRoom(Room room) {
     rooms.add(room);
+  }
+
+  public Signaling getSignaling() {
+    return signaling;
   }
 
   @Override

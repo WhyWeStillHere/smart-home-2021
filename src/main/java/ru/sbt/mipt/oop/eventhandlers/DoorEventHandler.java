@@ -8,26 +8,30 @@ import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class DoorEventHandler implements EventHandler {
-
   @Override
-  public void handleEvent(SmartHome smartHome, SensorEvent event) {
+  public void handleEvent(SmartHome smartHome, Event event) {
     if (!isCorrectEvent(event)) return;
+    SensorEvent sensorEvent = (SensorEvent) event;
 
     smartHome.execute((HomeComponent homeComponent) -> {
       if (!(homeComponent instanceof Door)) return;
       Door door = (Door) homeComponent;
-      if (!event.getObjectId().equals(door.getId())) return;
+      if (!sensorEvent.getObjectId().equals(door.getId())) return;
 
-      if (event.getType() == DOOR_OPEN) {
+      if (sensorEvent.getType() == DOOR_OPEN) {
         DoorEventHandler.handleOpenDoor(door);
-      } else if (event.getType() == DOOR_CLOSED) {
+      } else if (sensorEvent.getType() == DOOR_CLOSED) {
         DoorEventHandler.handleCloseDoor(door);
       }
     });
   }
 
-  private boolean isCorrectEvent(SensorEvent event) {
-    return event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED;
+  private boolean isCorrectEvent(Event event) {
+    if (!(event instanceof SensorEvent)) {
+      return false;
+    }
+    SensorEvent sensorEvent = (SensorEvent) event;
+    return sensorEvent.getType() == DOOR_OPEN || sensorEvent.getType() == DOOR_CLOSED;
   }
 
   private static void handleOpenDoor(Door door) {
