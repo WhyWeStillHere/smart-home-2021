@@ -1,7 +1,6 @@
-package ru.sbt.mipt.oop.home_components;
+package ru.sbt.mipt.oop.homecomponents;
 
 import ru.sbt.mipt.oop.Action;
-import ru.sbt.mipt.oop.home_components.Room;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,14 +20,11 @@ public class SmartHome implements HomeComponent {
     rooms.add(room);
   }
 
-  public Collection<Room> getRooms() {
-    return rooms;
-  }
-
   @Override
   public void execute(Action action) {
+    action.applyAction(this);
+
     for (Room room : rooms) {
-      action.applyAction(room);
       room.execute(action);
     }
   }

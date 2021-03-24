@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.home_components;
+package ru.sbt.mipt.oop.homecomponents;
 
 import ru.sbt.mipt.oop.Action;
 
@@ -24,5 +24,7 @@ public class Light implements HomeComponent {
   }
 
   @Override
-  public void execute(Action action) {}
+  public void execute(Action action) {
+    action.applyAction(this);
+  }
 }

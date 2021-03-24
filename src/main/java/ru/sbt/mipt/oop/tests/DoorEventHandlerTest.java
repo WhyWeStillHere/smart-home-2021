@@ -5,9 +5,8 @@ import ru.sbt.mipt.oop.JsonSmartHomeReader;
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
 import ru.sbt.mipt.oop.SmartHomeReader;
-import ru.sbt.mipt.oop.event_handlers.DoorEventHandler;
-import ru.sbt.mipt.oop.event_handlers.LightEventHandler;
-import ru.sbt.mipt.oop.home_components.SmartHome;
+import ru.sbt.mipt.oop.eventhandlers.DoorEventHandler;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import ru.sbt.mipt.oop.utils.HomeUtils;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

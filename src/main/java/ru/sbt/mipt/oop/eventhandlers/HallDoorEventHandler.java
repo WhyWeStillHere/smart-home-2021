@@ -1,9 +1,8 @@
-package ru.sbt.mipt.oop.event_handlers;
+package ru.sbt.mipt.oop.eventhandlers;
 
 import ru.sbt.mipt.oop.*;
-import ru.sbt.mipt.oop.command_senders.CommandSender;
-import ru.sbt.mipt.oop.home_components.*;
-import ru.sbt.mipt.oop.utils.HomeUtils;
+import ru.sbt.mipt.oop.commandsenders.CommandSender;
+import ru.sbt.mipt.oop.homecomponents.*;
 
 import static ru.sbt.mipt.oop.SensorEventType.*;
 

@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.home_components;
+package ru.sbt.mipt.oop.homecomponents;
 
 import ru.sbt.mipt.oop.Action;
 
@@ -15,15 +15,6 @@ public class Room implements HomeComponent {
     this.name = name;
   }
 
-  public Collection<Light> getLights() {
-    return lights;
-  }
-
-  public Collection<Door> getDoors() {
-    return doors;
-  }
-
-
   public boolean hasDoor(String doorId) {
     for (Door door: doors) {
       if (door.getId().equals(doorId)) {
@@ -39,12 +30,12 @@ public class Room implements HomeComponent {
 
   @Override
   public void execute(Action action) {
+    action.applyAction(this);
+
     for (Light light : lights) {
-      action.applyAction(light);
       light.execute(action);
     }
     for (Door door : doors) {
-      action.applyAction(door);
       door.execute(action);
     }
   }

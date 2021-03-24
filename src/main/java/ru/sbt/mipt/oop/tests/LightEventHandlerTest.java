@@ -2,16 +2,9 @@ package ru.sbt.mipt.oop.tests;
 
 import org.junit.jupiter.api.Test;
 import ru.sbt.mipt.oop.*;
-import ru.sbt.mipt.oop.event_handlers.LightEventHandler;
-import ru.sbt.mipt.oop.home_components.Light;
-import ru.sbt.mipt.oop.home_components.Room;
-import ru.sbt.mipt.oop.home_components.SmartHome;
+import ru.sbt.mipt.oop.eventhandlers.LightEventHandler;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import ru.sbt.mipt.oop.utils.HomeUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

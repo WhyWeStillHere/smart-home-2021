@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.event_handlers.EventHandler;
-import ru.sbt.mipt.oop.home_components.SmartHome;
+import ru.sbt.mipt.oop.eventhandlers.EventHandler;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 
 import java.util.Collection;
 

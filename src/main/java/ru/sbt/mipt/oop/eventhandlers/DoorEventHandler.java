@@ -1,11 +1,9 @@
-package ru.sbt.mipt.oop.event_handlers;
+package ru.sbt.mipt.oop.eventhandlers;
 
 import ru.sbt.mipt.oop.*;
-import ru.sbt.mipt.oop.home_components.Door;
-import ru.sbt.mipt.oop.home_components.HomeComponent;
-import ru.sbt.mipt.oop.home_components.Light;
-import ru.sbt.mipt.oop.home_components.SmartHome;
-import ru.sbt.mipt.oop.utils.HomeUtils;
+import ru.sbt.mipt.oop.homecomponents.Door;
+import ru.sbt.mipt.oop.homecomponents.HomeComponent;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 
 import static ru.sbt.mipt.oop.SensorEventType.*;
 

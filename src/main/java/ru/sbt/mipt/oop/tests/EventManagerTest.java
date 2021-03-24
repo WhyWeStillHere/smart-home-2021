@@ -2,12 +2,12 @@ package ru.sbt.mipt.oop.tests;
 
 import org.junit.jupiter.api.Test;
 import ru.sbt.mipt.oop.*;
-import ru.sbt.mipt.oop.command_senders.DummyCommandSender;
-import ru.sbt.mipt.oop.event_handlers.DoorEventHandler;
-import ru.sbt.mipt.oop.event_handlers.EventHandler;
-import ru.sbt.mipt.oop.event_handlers.HallDoorEventHandler;
-import ru.sbt.mipt.oop.event_handlers.LightEventHandler;
-import ru.sbt.mipt.oop.home_components.SmartHome;
+import ru.sbt.mipt.oop.commandsenders.DummyCommandSender;
+import ru.sbt.mipt.oop.eventhandlers.DoorEventHandler;
+import ru.sbt.mipt.oop.eventhandlers.EventHandler;
+import ru.sbt.mipt.oop.eventhandlers.HallDoorEventHandler;
+import ru.sbt.mipt.oop.eventhandlers.LightEventHandler;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import ru.sbt.mipt.oop.utils.HomeUtils;
 
 import java.util.Arrays;

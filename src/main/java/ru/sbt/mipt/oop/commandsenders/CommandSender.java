@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.command_senders;
+package ru.sbt.mipt.oop.commandsenders;
 
 import ru.sbt.mipt.oop.SensorCommand;
 
