@@ -6,5 +6,6 @@ import ru.sbt.mipt.oop.eventhandlers.EventHandler;
 public interface SignalingState {
   void activate(String code);
   void deactivate(String code);
+  void alarm();
   boolean isAlarm();
 }

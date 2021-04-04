@@ -10,6 +10,11 @@ public class ActivatedSignalingState implements SignalingState {
   }
 
   @Override
+  public void alarm() {
+    SetAlarm();
+  }
+
+  @Override
   public void activate(String code) {
     SetAlarm();
   }

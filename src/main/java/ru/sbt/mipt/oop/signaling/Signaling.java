@@ -19,6 +19,10 @@ public class Signaling {
     state.deactivate(code);
   }
 
+  public void alarm() {
+    state.alarm();
+  }
+
   public boolean isAlarm() {
     return state.isAlarm();
   }

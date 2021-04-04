@@ -17,6 +17,12 @@ public class DeactivatedSignalingState implements SignalingState {
   }
 
   @Override
+  public void alarm() {
+    System.out.println("Sending sms");
+    signaling.changeState(new AlarmSignalingState(signaling));
+  }
+
+  @Override
   public boolean isAlarm() {
     return false;
   }
