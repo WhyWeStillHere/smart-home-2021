@@ -11,12 +11,12 @@ public class Signaling {
     this.state = new DeactivatedSignalingState(this);
   }
 
-  public void Activate(String code) {
-    state.Activate(code);
+  public void activate(String code) {
+    state.activate(code);
   }
 
-  public void Deactivate(String code) {
-    state.Deactivate(code);
+  public void deactivate(String code) {
+    state.deactivate(code);
   }
 
   public boolean isAlarm() {

@@ -8,12 +8,12 @@ public class DeactivatedSignalingState implements SignalingState {
   }
 
   @Override
-  public void Activate(String code) {
+  public void activate(String code) {
     signaling.changeState(new ActivatedSignalingState(signaling, code));
   }
 
   @Override
-  public void Deactivate(String code) {
+  public void deactivate(String code) {
   }
 
   @Override

@@ -10,12 +10,12 @@ public class ActivatedSignalingState implements SignalingState {
   }
 
   @Override
-  public void Activate(String code) {
+  public void activate(String code) {
     SetAlarm();
   }
 
   @Override
-  public void Deactivate(String code) {
+  public void deactivate(String code) {
     if (code.equals(alarmCode)) {
       signaling.changeState(new DeactivatedSignalingState(signaling));
     } else {
