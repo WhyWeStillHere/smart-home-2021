@@ -5,6 +5,7 @@ import ru.sbt.mipt.oop.commandsenders.CommandSender;
 import ru.sbt.mipt.oop.homecomponents.*;
 
 import static ru.sbt.mipt.oop.SensorEventType.*;
+import static ru.sbt.mipt.oop.utils.HomeUtils.findDoor;
 
 public class HallDoorEventHandler implements EventHandler {
   private final CommandSender commandSender;
@@ -21,7 +22,7 @@ public class HallDoorEventHandler implements EventHandler {
       if (!(homeComponent instanceof Room)) return;
       Room room = (Room) homeComponent;
 
-      if (room.getName().equals("hall") && room.hasDoor(event.getObjectId())) {
+      if (room.getName().equals("hall") && findDoor(room, event.getObjectId()) != null) {
         smartHome.execute((HomeComponent otherHomeComponent) -> {
           if (!(otherHomeComponent instanceof Light)) return;
           Light light = (Light) otherHomeComponent;

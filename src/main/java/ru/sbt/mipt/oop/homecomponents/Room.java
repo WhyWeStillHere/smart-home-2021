@@ -15,15 +15,6 @@ public class Room implements HomeComponent {
     this.name = name;
   }
 
-  public boolean hasDoor(String doorId) {
-    for (Door door: doors) {
-      if (door.getId().equals(doorId)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public String getName() {
     return name;
   }

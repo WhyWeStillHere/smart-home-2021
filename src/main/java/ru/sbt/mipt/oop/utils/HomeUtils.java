@@ -54,15 +54,15 @@ public class HomeUtils {
     }
   }
 
-  public static Light findLight(SmartHome smartHome, String lightId) {
+  public static Light findLight(HomeComponent homeComponent, String lightId) {
     FindLightAction findLightAction = new FindLightAction(lightId);
-    smartHome.execute(findLightAction);
+    homeComponent.execute(findLightAction);
     return findLightAction.getLight();
   }
 
-  public static Door findDoor(SmartHome smartHome, String doorId) {
+  public static Door findDoor(HomeComponent homeComponent, String doorId) {
     FindDoorAction findDoorAction = new FindDoorAction(doorId);
-    smartHome.execute(findDoorAction);
+    homeComponent.execute(findDoorAction);
     return findDoorAction.getDoor();
   }
 }
