@@ -15,7 +15,7 @@ public class EventManager {
   }
 
 
-  public void HandleEvent(SensorEvent event) {
+  public void HandleEvent(Event event) {
     System.out.println("Got event: " + event);
 
     for (EventHandler eventHandler : eventHandlers) {
