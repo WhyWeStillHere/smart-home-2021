@@ -1,41 +1,68 @@
 package ru.sbt.mipt.oop.utils;
 
-import ru.sbt.mipt.oop.Door;
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.homecomponents.*;
 
 public class HomeUtils {
-  public static Light findLight(SmartHome smartHome, String lightId) {
-    for (Room room : smartHome.getRooms()) {
-      for (Light light : room.getLights()) {
-        if (light.getId().equals(lightId)) {
-          return light;
-        }
+  private static class FindLightAction implements Action {
+    private Light foundLight = null;
+    private final String lightId;
+
+    public FindLightAction(String lightId) {
+      this.lightId = lightId;
+    }
+
+    public Light getLight() {
+      return foundLight;
+    }
+
+    @Override
+    public void applyAction(HomeComponent homeComponent) {
+      if (!(homeComponent instanceof Light)) {
+        return;
+      }
+
+      Light light = (Light) homeComponent;
+      if (light.getId().equals(lightId)) {
+        foundLight = light;
       }
     }
-    return null;
   }
 
-  public static Door findDoor(SmartHome smartHome, String doorId) {
-    for (Room room : smartHome.getRooms()) {
-      for (Door door : room.getDoors()) {
-        if (door.getId().equals(doorId)) {
-          return door;
-        }
+  private static class FindDoorAction implements Action {
+    private Door foundDoor = null;
+    private final String doorId;
+
+    public FindDoorAction(String doorId) {
+      this.doorId = doorId;
+    }
+
+    public Door getDoor() {
+      return foundDoor;
+    }
+
+    @Override
+    public void applyAction(HomeComponent homeComponent) {
+      if (!(homeComponent instanceof Door)) {
+        return;
+      }
+
+      Door door = (Door) homeComponent;
+      if (door.getId().equals(doorId)) {
+        foundDoor = door;
       }
     }
-    return null;
   }
 
-  public static Room findDoorRoom(SmartHome smartHome, String doorId) {
-    for (Room room : smartHome.getRooms()) {
-      for (Door door : room.getDoors()) {
-        if (door.getId().equals(doorId)) {
-          return room;
-        }
-      }
-    }
-    return null;
+  public static Light findLight(HomeComponent homeComponent, String lightId) {
+    FindLightAction findLightAction = new FindLightAction(lightId);
+    homeComponent.execute(findLightAction);
+    return findLightAction.getLight();
+  }
+
+  public static Door findDoor(HomeComponent homeComponent, String doorId) {
+    FindDoorAction findDoorAction = new FindDoorAction(doorId);
+    homeComponent.execute(findDoorAction);
+    return findDoorAction.getDoor();
   }
 }
