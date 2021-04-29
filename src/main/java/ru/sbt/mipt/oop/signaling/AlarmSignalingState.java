@@ -17,12 +17,5 @@ public class AlarmSignalingState implements SignalingState {
 
   @Override
   public void alarm() {
-
   }
-
-  @Override
-  public boolean isAlarm() {
-    return true;
-  }
-
 }

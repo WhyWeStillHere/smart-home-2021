@@ -22,9 +22,4 @@ public class DeactivatedSignalingState implements SignalingState {
     signaling.changeState(new AlarmSignalingState(signaling));
   }
 
-  @Override
-  public boolean isAlarm() {
-    return false;
-  }
-
 }

@@ -24,6 +24,6 @@ public class Signaling {
   }
 
   public boolean isAlarm() {
-    return state.isAlarm();
+    return state instanceof AlarmSignalingState;
   }
 }

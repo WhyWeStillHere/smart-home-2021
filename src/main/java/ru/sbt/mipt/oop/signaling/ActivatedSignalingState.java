@@ -28,11 +28,6 @@ public class ActivatedSignalingState implements SignalingState {
     }
   }
 
-  @Override
-  public boolean isAlarm() {
-    return false;
-  }
-
   void SetAlarm() {
     System.out.println("Sending sms");
     signaling.changeState(new AlarmSignalingState(signaling));
