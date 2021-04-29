@@ -4,9 +4,10 @@ import ru.sbt.mipt.oop.homecomponents.HomeComponent;
 import ru.sbt.mipt.oop.homecomponents.Light;
 import ru.sbt.mipt.oop.homecomponents.SmartHome;
 
-public class TurnOnAllLightCommand extends SmartHomeCommand {
+public class TurnOnAllLightCommand implements Command {
+  private final SmartHome smartHome;
   public TurnOnAllLightCommand(SmartHome smartHome) {
-    super(smartHome);
+    this.smartHome = smartHome;
   }
 
   @Override

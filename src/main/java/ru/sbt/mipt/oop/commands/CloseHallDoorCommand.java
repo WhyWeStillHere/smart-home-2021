@@ -2,9 +2,10 @@ package ru.sbt.mipt.oop.commands;
 
 import ru.sbt.mipt.oop.homecomponents.*;
 
-public class CloseHallDoorCommand extends SmartHomeCommand {
+public class CloseHallDoorCommand implements Command {
+  private final SmartHome smartHome;
   public CloseHallDoorCommand(SmartHome smartHome) {
-    super(smartHome);
+    this.smartHome = smartHome;
   }
 
   @Override

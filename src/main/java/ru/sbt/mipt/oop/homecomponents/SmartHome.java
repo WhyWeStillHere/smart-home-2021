@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop.homecomponents;
 
+import rc.RemoteControl;
+import rc.RemoteControlRegistry;
 import ru.sbt.mipt.oop.Action;
 import ru.sbt.mipt.oop.signaling.Signaling;
 
@@ -7,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SmartHome implements HomeComponent {
+  private final Signaling signaling = new Signaling();
   private final Collection<Room> rooms;
-  private Signaling signaling;
+  private RemoteControlRegistry remoteControlRegistry;
 
   public SmartHome() {
     rooms = new ArrayList<>();
-    signaling = new Signaling();
   }
 
   public SmartHome(Collection<Room> rooms) {
@@ -21,6 +23,16 @@ public class SmartHome implements HomeComponent {
 
   public void addRoom(Room room) {
     rooms.add(room);
+  }
+
+  public void addRemoteControlRegistry(RemoteControlRegistry remoteControlRegistry) {
+    this.remoteControlRegistry = remoteControlRegistry;
+  }
+
+  public void registerRemoteControl(RemoteControl remoteControl, String rcId) {
+    if (remoteControlRegistry != null) {
+      remoteControlRegistry.registerRemoteControl(remoteControl, rcId);
+    }
   }
 
   public Signaling getSignaling() {

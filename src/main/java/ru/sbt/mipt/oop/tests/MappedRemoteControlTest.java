@@ -12,6 +12,8 @@ import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import ru.sbt.mipt.oop.remotecontrol.MappedRemoteControl;
 import ru.sbt.mipt.oop.utils.HomeUtils;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -23,7 +25,7 @@ public class MappedRemoteControlTest {
     SmartHomeReader reader = new JsonSmartHomeReader(TestUtils.TEST_DATA_PATH + "smart-home-1.js");
     SmartHome smartHome = reader.readSmartHome();
     Command command = new TurnOffAllLightCommand(smartHome);
-    MappedRemoteControl remoteControl = new MappedRemoteControl();
+    MappedRemoteControl remoteControl = new MappedRemoteControl(new HashSet<>(Arrays.asList("A", "B", "C", "D", "1", "2", "3", "4")));
     remoteControl.registerButtonCommand("A", command);
 
     remoteControl.onButtonPressed("A");
@@ -40,7 +42,7 @@ public class MappedRemoteControlTest {
     SmartHome smartHome = reader.readSmartHome();
     Command command_1 = new TurnOffAllLightCommand(smartHome);
     Command command_2 = new TurnOnAllLightCommand(smartHome);
-    MappedRemoteControl remoteControl = new MappedRemoteControl();
+    MappedRemoteControl remoteControl = new MappedRemoteControl(new HashSet<>(Arrays.asList("A", "B", "C", "D", "1", "2", "3", "4")));
     remoteControl.registerButtonCommand("A", command_1);
     remoteControl.registerButtonCommand("A", command_2);
 
@@ -58,7 +60,7 @@ public class MappedRemoteControlTest {
     SmartHome smartHome = reader.readSmartHome();
     Command command_1 = new TurnOffAllLightCommand(smartHome);
     Command command_2 = new TurnOnAllLightCommand(smartHome);
-    MappedRemoteControl remoteControl = new MappedRemoteControl();
+    MappedRemoteControl remoteControl = new MappedRemoteControl(new HashSet<>(Arrays.asList("A", "B", "C", "D", "1", "2", "3", "4")));
     remoteControl.registerButtonCommand("A", command_1);
     remoteControl.registerButtonCommand("B", command_2);
 

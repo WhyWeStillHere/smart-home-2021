@@ -3,17 +3,17 @@ package ru.sbt.mipt.oop;
 import com.coolcompany.smarthome.events.SensorEventsManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import rc.RemoteControl;
+import rc.RemoteControlRegistry;
 import ru.sbt.mipt.oop.commandsenders.DummyCommandSender;
 import ru.sbt.mipt.oop.eventhandlers.*;
 import ru.sbt.mipt.oop.homecomponents.SmartHome;
 import ru.sbt.mipt.oop.libadapter.EventAdapter;
 import ru.sbt.mipt.oop.libadapter.EventHandlerAdapter;
+import ru.sbt.mipt.oop.remotecontrol.MappedRemoteControl;
 import ru.sbt.mipt.oop.signaling.AlarmHandlerDecorator;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,6 +25,9 @@ public class SmartHomeConfiguration {
 
     SmartHomeReader reader = smartHomeReader();
     SmartHome smartHome = reader.readSmartHome();
+    smartHome.addRemoteControlRegistry(remoteControlRegistry());
+    smartHome.registerRemoteControl(remoteControl(), "0");
+
     Collection<EventHandler> handlers = eventHandlers();
     EventHandlerAdapter adapter = eventHandlerAdapter();
     EventAdapter eventAdapter = eventAdapter();
@@ -69,5 +72,20 @@ public class SmartHomeConfiguration {
         new HashMap.SimpleImmutableEntry<>("DoorIsOpen", SensorEventType.DOOR_OPEN),
         new HashMap.SimpleImmutableEntry<>("DoorIsClosed", SensorEventType.DOOR_CLOSED)
     ).collect(Collectors.toMap(HashMap.Entry::getKey, HashMap.Entry::getValue));
+  }
+
+  @Bean
+  RemoteControlRegistry remoteControlRegistry() {
+    return new RemoteControlRegistry();
+  }
+
+  @Bean
+  RemoteControl remoteControl() {
+    return new MappedRemoteControl(remoteControlButtons());
+  }
+
+  @Bean
+  HashSet<String> remoteControlButtons() {
+    return new HashSet<>(Arrays.asList("A", "B", "C", "D", "1", "2", "3", "4"));
   }
 }
