@@ -13,13 +13,8 @@ import java.util.stream.Stream;
 public class EventAdapter {
   private final Map<String, SensorEventType> eventTypeMap;
 
-  EventAdapter() {
-    eventTypeMap = Stream.of(
-        new HashMap.SimpleImmutableEntry<>("LightIsOn", SensorEventType.LIGHT_ON),
-        new HashMap.SimpleImmutableEntry<>("LightIsOff", SensorEventType.LIGHT_OFF),
-        new HashMap.SimpleImmutableEntry<>("DoorIsOpen", SensorEventType.DOOR_OPEN),
-        new HashMap.SimpleImmutableEntry<>("DoorIsClosed", SensorEventType.DOOR_CLOSED)
-    ).collect(Collectors.toMap(HashMap.Entry::getKey, HashMap.Entry::getValue));
+  public EventAdapter(Map<String, SensorEventType> eventTypeMap) {
+    this.eventTypeMap = eventTypeMap;
   }
 
   public Event adaptEvent(CCSensorEvent event) {
