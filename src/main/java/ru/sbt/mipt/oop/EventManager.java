@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.event_handlers.EventHandler;
+import ru.sbt.mipt.oop.eventhandlers.EventHandler;
+import ru.sbt.mipt.oop.homecomponents.SmartHome;
 
 import java.util.Collection;
 
@@ -14,7 +15,7 @@ public class EventManager {
   }
 
 
-  public void HandleEvent(SensorEvent event) {
+  public void HandleEvent(Event event) {
     System.out.println("Got event: " + event);
 
     for (EventHandler eventHandler : eventHandlers) {
